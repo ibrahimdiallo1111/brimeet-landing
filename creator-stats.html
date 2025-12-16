@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistiques Créateur – BriMeet</title>
+
+    <!-- 🎯 Favicon et icônes multi-plateformes -->
+    <!-- Icône PNG pour navigateurs classiques -->
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+    <!-- Icône SVG pour navigateurs modernes -->
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <!-- Favicon ICO pour compatibilité maximale -->
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <!-- Icône Apple pour écran d’accueil iOS -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <!-- Nom affiché lors de l’ajout à l’écran d’accueil iOS -->
+    <meta name="apple-mobile-web-app-title" content="BriMeet" />
+    <!-- Manifest PWA pour Chrome/Android -->
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f4f8fb;
+            color: #333;
+        }
+
+        header {
+            background: #0077cc;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #0077cc;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table th,
+        table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        table th {
+            background: #0077cc;
+            color: white;
+        }
+
+        .transfer-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 20px;
+            background: #0077cc;
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+        .transfer-btn:hover {
+            background: #005fa3;
+        }
+
+        .note {
+            margin-top: 15px;
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        /* ✅ Footer stylisé */
+        footer {
+            background-color: #0077cc;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        footer a {
+            color: #ffdd57;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <h1>📊 Statistiques Créateur BriMeet</h1>
+        <p>Suivez vos performances et vos revenus</p>
+    </header>
+
+    <main>
+        <h2>Vos performances</h2>
+        <table>
+            <tr>
+                <th>Abonnés</th>
+                <th>Likes cumulés</th>
+                <th>Invitations</th>
+                <th>Pourcentage revenu</th>
+                <th>Statut</th>
+            </tr>
+            <tr>
+                <td id="audience">--</td>
+                <td id="likes">--</td>
+                <td id="invites">--</td>
+                <td id="percent">--</td>
+                <td id="status">--</td>
+            </tr>
+        </table>
+
+        <h2>Vos revenus</h2>
+        <table>
+            <tr>
+                <th>Revenu en cours</th>
+                <th>Revenu mois passé</th>
+                <th>Solde total validé</th>
+            </tr>
+            <tr>
+                <td id="current_revenue">⏳ En cours</td>
+                <td id="last_revenue">--</td>
+                <td id="total_balance">--</td>
+            </tr>
+        </table>
+
+        <a href="#" class="transfer-btn" id="transferBtn">💳 Transférer vers mon solde BriMeet</a>
+
+        <div id="confirmModal" style="display:none; 
+     position:fixed; top:0; left:0; width:100%; height:100%; 
+     background:rgba(0,0,0,0.5); text-align:center; padding-top:200px;">
+            <div style="background:white; padding:20px; border-radius:8px; max-width:400px; margin:auto;">
+                <p>⚠️ Confirmation : Le transfert inclut le solde total validé (revenu du mois passé + cumules).<br>
+                    Le revenu en cours sera ajouté après validation (mise à jour le 5 de chaque mois).</p>
+                <button onclick="proceedTransfer()">✅ Continuer</button>
+                <button onclick="closeModal()">❌ Annuler</button>
+            </div>
+        </div>
+
+        <div id="successModal" style="display:none; 
+     position:fixed; top:0; left:0; width:100%; height:100%; 
+     background:rgba(0,0,0,0.5); text-align:center; padding-top:200px;">
+            <div style="background:white; padding:20px; border-radius:8px; max-width:400px; margin:auto;">
+                <h3 style="color:green;">✅ Transfert réussi</h3>
+                <p id="successMessage"></p>
+                <button onclick="goToWallet()">💼 Voir mon solde BriMeet</button>
+            </div>
+        </div>
+
+        <script>
+            const modal = document.getElementById("confirmModal");
+            const successModal = document.getElementById("successModal");
+
+            document.getElementById("transferBtn").addEventListener("click", function (e) {
+                e.preventDefault();
+                modal.style.display = "block";
+            });
+
+            function closeModal() {
+                modal.style.display = "none";
+            }
+
+            function showSuccess(amount, balance) {
+                document.getElementById("successMessage").textContent =
+                    `${amount} $ envoyés vers ton solde BriMeet.`;
+                successModal.style.display = "block";
+            }
+
+            function goToWallet() {
+                window.location.href = "/wallet.html"; // redirection après succès
+            }
+
+            async function proceedTransfer() {
+                try {
+                    const response = await fetch(`${backendUrl}/creator-partnership/transfer`, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Authorization": `Bearer ${token}`
+                        }
+                    });
+
+                    const result = await response.json();
+                    if (result.success) {
+                        closeModal(); // ✅ fermer la modale de confirmation
+                        localStorage.setItem("walletBalance", result.balance); // ✅ stocker le solde
+                        showSuccess(result.amount, result.balance); // ✅ afficher la modale de succès
+                    } else {
+                        alert("❌ Erreur : " + result.error);
+                    }
+                } catch (err) {
+                    console.error("Erreur transfert :", err);
+                    alert("❌ Impossible de réaliser le transfert.");
+                }
+            }
+        </script>
+
+
+
+        <p class="note">ℹ️ Le revenu en cours est mis à jour le 5 de chaque mois et devient “Revenu mois passé”.</p>
+
+        <p class="note">
+            📈 Ton pourcentage de revenu évolue automatiquement en fonction de ton audience et de tes likes.
+            Chaque nouveau palier atteint est pris en compte lors des mises à jour régulières du programme.
+        </p>
+
+        <p id="suspendedNote" class="note"
+            style="display:none; background:#ffe5e5; color:red; font-weight:bold; padding:10px; border-radius:6px;">
+            ⏸️ Ton programme est actuellement suspendu.<br>
+            Pour le réactiver, tu dois atteindre le palier suivant (nouveau seuil d’abonnés et de likes).
+        </p>
+
+        <p style="background:#f5f5f5; padding:10px; border-radius:6px; color:#333; font-size:0.9em; margin-top:20px;">
+            📅 Programme actif du <span id="program_start">--</span> au <span id="program_end">--</span>
+        </p>
+
+
+
+
+
+        <!-- Bouton Réessayer caché par défaut -->
+        <div id="retryContainer" style="display:none; text-align:center; margin-top:20px;">
+            <p>❌ Impossible de charger les statistiques.</p>
+            <button id="retryBtn">🔄 Réessayer</button>
+        </div>
+
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 BriMeet. Tous droits réservés.</p>
+        <p>📩 Contact : <a href="mailto:contact@brimeet.com" style="color:white;">contact@brimeet.com</a></p>
+    </footer>
+
+    <script>
+        const backendUrl = "https://api.brimeet.com";
+        const token = localStorage.getItem("authToken");
+
+        async function loadStats() {
+            try {
+                const response = await fetch(`${backendUrl}/creator-partnership/stats`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`
+                    },
+                    body: JSON.stringify({}) // tu peux envoyer vide ou avec userId si besoin
+                });
+
+                const text = await response.text();
+                console.log("raw response:", text);
+
+                const data = JSON.parse(text); // si ce n'est pas du JSON → erreur
+
+                // ✅ Remplir le tableau
+                document.getElementById("audience").textContent = data.audience || "--";
+                document.getElementById("likes").textContent = data.likes || "--";
+                document.getElementById("invites").textContent = data.invites || "--";
+                document.getElementById("percent").textContent = data.percent ? data.percent + "%" : "--";
+                document.getElementById("status").textContent = data.status === "suspended" ? "⏸️ Suspendu" : data.status || "--";
+                document.getElementById("current_revenue").textContent = data.status === "suspended" ? "⏸️ Suspendu" : (data.current_revenue ? data.current_revenue + " $" : "⏳ En cours");
+                document.getElementById("last_revenue").textContent = data.last_revenue ? data.last_revenue + " $" : "--";
+                document.getElementById("total_balance").textContent = data.total_balance ? data.total_balance + " $" : "--";
+                document.getElementById("program_start").textContent = data.program_start ? new Date(data.program_start).toLocaleDateString() : "--";
+                document.getElementById("program_end").textContent = data.program_end ? new Date(data.program_end).toLocaleDateString() : "--";
+
+
+                // ✅ Afficher la note si revenu en MAD > 0 mais last_revenue = 0
+                if (data.mad_revenue > 0 && (!data.last_revenue || data.last_revenue === 0)) {
+                    const note = document.createElement("p");
+                    note.className = "note";
+                    note.style.color = "orange";
+                    note.textContent = "ℹ️ Il se peut que tu commences à générer du revenu, mais il ne peut pas être affiché tant qu'il n'atteint pas 1 $.";
+                    document.querySelector("main").appendChild(note);
+                }
+
+
+                // ✅ Afficher la note si suspendu
+                if (data.status === "suspended") {
+                    document.getElementById("suspendedNote").style.display = "block";
+                } else {
+                    document.getElementById("suspendedNote").style.display = "none";
+                }
+
+
+                // ✅ Afficher la note si expiré et pas encore demandé
+                if (data.program_status === "expired" && data.renewal_request === "none") {
+                    const renewalBtn = document.createElement("button");
+                    renewalBtn.textContent = "🔄 Demander un renouvellement";
+                    renewalBtn.onclick = async () => {
+                        try {
+                            const response = await fetch(`${backendUrl}/creator-partnership/renewal`, {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                    "Authorization": `Bearer ${token}`
+                                },
+                                body: JSON.stringify({ userId: data.user_id })
+                            });
+
+                            const result = await response.json();
+
+                            if (result.success) {
+                                renewalBtn.style.display = "none";
+                                const note = document.createElement("p");
+                                note.textContent = "📩 Votre demande de renouvellement est en cours. Vous serez notifié par email.";
+                                document.querySelector("main").appendChild(note);
+                                document.getElementById("status").textContent = "⏳ Expiré";
+                                document.getElementById("current_revenue").textContent = "⏳ Expiré";
+                            } else {
+                                alert("❌ Erreur : " + (result.error || "Impossible d'enregistrer la demande."));
+                            }
+                        } catch (err) {
+                            console.error("❌ Erreur lors de la demande de renouvellement:", err);
+                            alert("❌ Impossible de soumettre la demande de renouvellement. Vérifiez votre connexion.");
+                        }
+                    };
+                    document.getElementById("status").textContent = "⏳ Expiré";
+                    document.getElementById("current_revenue").textContent = "⏳ Expiré";
+                    document.querySelector("main").appendChild(renewalBtn);
+                }
+
+                // ✅ Afficher un message si demande de renouvellement déjà en cours
+                if (data.program_status === "expired" && data.renewal_request === "pending") {
+                    const note = document.createElement("p");
+                    note.className = "note";
+                    note.style.color = "blue";
+                    note.textContent = "📩 Votre demande de renouvellement est en cours. Vous serez notifié par email.";
+                    document.querySelector("main").appendChild(note);
+
+                    document.getElementById("status").textContent = "⏳ Expiré";
+                    document.getElementById("current_revenue").textContent = "⏳ Expiré";
+                }
+
+
+
+                // ✅ Afficher un message si programme terminé définitivement
+                if (data.program_status === "terminated") {
+                    const note = document.createElement("p");
+                    note.className = "note";
+                    note.style.color = "red";
+                    note.textContent = "⛔ Votre programme est terminé définitivement. Vous ne pouvez plus demander de renouvellement.";
+                    document.querySelector("main").appendChild(note);
+
+                    // Mettre le status à "Terminé"
+                    document.getElementById("status").textContent = "⛔ Terminé";
+                    // Mettre revenu en cours à "Terminé"
+                    document.getElementById("current_revenue").textContent = "⛔ Terminé";
+                }
+
+
+
+
+                // ✅ Masquer le bouton Réessayer si ça marche
+                document.getElementById("retryContainer").style.display = "none";
+
+            } catch (err) {
+                console.error("❌ Erreur lors du chargement des stats:", err);
+                // ✅ Afficher le bouton Réessayer
+                document.getElementById("retryContainer").style.display = "block";
+            }
+        }
+
+        // Charger au démarrage
+        document.addEventListener("DOMContentLoaded", loadStats);
+
+        // Bouton Réessayer
+        document.getElementById("retryBtn").addEventListener("click", loadStats);
+    </script>
+
+</body>
+
+</html>

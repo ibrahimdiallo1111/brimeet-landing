@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kit Créateur – BriMeet</title>
+
+    <!-- Favicon et SEO -->
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="BriMeet" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+    <meta name="description"
+        content="Kit officiel pour les créateurs sélectionnés du programme BriMeet. Visuels, code promo, guidelines et conditions.">
+    <meta name="keywords"
+        content="brimeet, bright meet, kit créateur, influenceur, visuels, code promo, ambassadeur BriMeet">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Kit Créateur – BriMeet">
+    <meta property="og:description"
+        content="Accède à ton kit créateur BriMeet : visuels officiels, code promo, guidelines et conditions.">
+    <meta property="og:image" content="https://brimeet.com/assets/brimeet_logo.png">
+    <meta property="og:url" content="https://brimeet.com/creator-kit.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Kit Créateur – BriMeet">
+    <meta name="twitter:description"
+        content="Accède à ton kit créateur BriMeet : visuels officiels, code promo, guidelines et conditions.">
+    <meta name="twitter:image" content="https://brimeet.com/assets/brimeet_logo.png">
+
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            background-color: #f4f8ff;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #0077cc;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .logo {
+            width: 120px;
+            margin-bottom: 20px;
+        }
+
+        section {
+            max-width: 800px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        h2 {
+            color: #0077cc;
+            margin-bottom: 10px;
+        }
+
+        .highlight {
+            background-color: #e6f0ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .download-button {
+            background-color: #0077cc;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 8px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        footer {
+            background-color: #0077cc;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .table-cell {
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <img src="assets/brimeet_logo.png" alt="Logo BriMeet" class="logo">
+        <h1>Kit Créateur BriMeet</h1>
+        <p>Connectez le monde, ouvrez les opportunités</p>
+    </header>
+
+    <section>
+        <div class="highlight">
+            <strong>🎉 Félicitations !</strong> Tu fais partie du programme Créateur BriMeet. Voici ton kit officiel.
+        </div>
+
+        <h2>🎯 Ton code promo</h2>
+        <p>Voici ton code personnel à partager avec ton audience :</p>
+        <div class="highlight">
+            <strong>Code :</strong> <span id="promo-code"></span>
+        </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const promoCode = localStorage.getItem("promoCode");
+                document.getElementById("promo-code").textContent = promoCode ?? "—"; // ✅ valeur par défaut
+            });
+
+        </script>
+
+        <p>Lorsqu’un utilisateur utilise ton code promo lors de son inscription :</p>
+        <ul>
+            <li>🪙 Il reçoit <strong>50 points</strong> de bienvenue, ajoutés à ses <strong>30 points d’entrée</strong>
+                (total : 80 points).</li>
+            <li>🪙 Tu reçois <strong>20 points</strong> en tant que créateur, ajoutés à ton solde BriMeet.</li>
+
+        </ul>
+        <p>Ces points peuvent être utilisés pour :</p>
+        <ul>
+            <li>📩 Répondre à des propositions (contacter des membres ou des recruteurs)</li>
+            <li>📤 Proposer des offres, services, produits ou opportunités</li>
+        </ul>
+        <p>💡 <strong>Chaque action consomme 20 points</strong>, que ce soit pour répondre ou proposer.
+            Cela permet de garantir la qualité des échanges et de valoriser les interactions actives sur BriMeet.</p>
+
+        <!-- Visuels officiels avancés -->
+        <!-- 
+        <h2>📸 Visuels officiels</h2>
+        <p>Utilise ces visuels pour tes stories, posts, vidéos :</p>
+        <ul>
+            <li>Logo BriMeet (PNG, SVG)</li>
+            <li>Bannières pour Instagram, TikTok, YouTube</li>
+            <li>Modèles de stories et reels</li>
+        </ul>
+        <a href="/assets/kit-visuel-brimeet.zip" class="download-button">📥 Télécharger le pack visuel</a>
+        -->
+        <!-- Visuels officiels simples -->
+        <h2>📸 Visuels officiels</h2>
+        <p>Tu peux utiliser ces visuels pour tes stories, posts, vidéos :</p>
+        <ul>
+            <li>🎨 <strong>Style visuel recommandé :</strong> couleur bleu BriMeet</li>
+            <li>🖼️ <strong>Slogan à intégrer :</strong> “Connectez le monde, ouvrez les opportunités”</li>
+            <li>📌 <strong>Logo BriMeet :</strong> disponible en PNG</li>
+        </ul>
+        <p>📥 Tu peux télécharger le logo ici :</p>
+        <a href="assets/brimeet_logo.png" download class="download-button">📥 Télécharger le logo</a>
+
+
+        <h2>🧭 Guidelines de communication</h2>
+        <p>Voici les recommandations à suivre pour que ta communication reste cohérente avec l’image BriMeet :</p>
+        <ul>
+            <li>Utilise un ton inclusif, positif et professionnel</li>
+            <li>Hashtags suggérés : #BriMeet #brimeet #ConnectTheWorld #Opportunities</li>
+            <li>Hashtags additionnels (à utiliser selon ton contenu) :
+                <ul>
+                    <li>Fonctionnalités :
+                        #SocialMedia #Monetization #Meetings #Conferences
+                        #Requests #Proposals #Communities #MessagingApp
+                    </li>
+                    <li>Audience :
+                        #Creators #Freelancers #Students #Teachers
+                        #Entrepreneurs #Businesses #Communities
+                    </li>
+                    <li>Thèmes :
+                        #Jobs #Services #Products #Videos #CareerGrowth
+                        #OpportunitiesPlatform #Networking #Learning
+                    </li>
+                </ul>
+            </li>
+
+            <li>Lien officiel à partager : <strong>https://brimeet.com</strong><br>
+                Ce lien permet aux utilisateurs de découvrir le fonctionnement de BriMeet et leur proposera
+                automatiquement la version adaptée à leur appareil dès qu’elle sera disponible (Android, iOS ou Web).
+            </li>
+            <li>Évite les promesses exagérées ou les comparaisons directes</li>
+        </ul>
+
+        <h2>📜 Conditions du programme</h2>
+        <ul>
+            <li>Durée initiale : 3 mois, renouvelable selon tes résultats</li>
+            <li>Suivi mensuel des performances (audience, conversions)</li>
+            <li>Respect des guidelines et de l’image BriMeet</li>
+        </ul>
+
+        <h2>💰 Répartition des revenus</h2>
+        <p>Voici la grille indicative selon ton audience et ton engagement :</p>
+
+        <table style="width:100%; border-collapse: collapse;">
+            <thead>
+                <tr style="background-color:#0077cc; color:white;">
+                    <th class="table-cell">Abonnés</th>
+                    <th class="table-cell">Likes cumulés</th>
+                    <th class="table-cell">Pourcentage de revenu</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="table-cell">≥ 100</td>
+                    <td class="table-cell">≥ 50</td>
+                    <td class="table-cell">1%</td>
+                </tr>
+                <tr>
+                    <td class="table-cell">≥ 200</td>
+                    <td class="table-cell">≥ 100</td>
+                    <td class="table-cell">2%</td>
+                </tr>
+                <tr>
+                    <td class="table-cell">≥ 300</td>
+                    <td class="table-cell">≥ 150</td>
+                    <td class="table-cell">3%</td>
+                </tr>
+                <tr>
+                    <td class="table-cell">≥ 400</td>
+                    <td class="table-cell">≥ 200</td>
+                    <td class="table-cell">4%</td>
+                </tr>
+                <tr>
+                    <td class="table-cell">≥ 500</td>
+                    <td class="table-cell">≥ 250</td>
+                    <td class="table-cell">5%</td>
+                </tr>
+                <tr>
+                    <td class="table-cell">≥ 600</td>
+                    <td class="table-cell">≥ 300</td>
+                    <td class="table-cell">6%</td>
+                </tr>
+                <tr>
+                    <td class="table-cell">≥ 700</td>
+                    <td class="table-cell">≥ 350</td>
+                    <td class="table-cell">7%</td>
+                </tr>
+                <tr>
+                    <td class="table-cell">≥ 800</td>
+                    <td class="table-cell">≥ 400</td>
+                    <td class="table-cell">8%</td>
+                </tr>
+                <tr>
+                    <td class="table-cell">≥ 900</td>
+                    <td class="table-cell">≥ 450</td>
+                    <td class="table-cell">9%</td>
+                </tr>
+                <tr>
+                    <td class="table-cell">≥ 1000</td>
+                    <td class="table-cell">≥ 500</td>
+                    <td class="table-cell">10% (plafond)</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <p style="margin-top:10px;">Cette grille est indicative et peut évoluer selon les performances. Un suivi mensuel
+            est prévu.</p>
+        <p style="margin-top:10px;">
+            📌 Le pourcentage reste fixe tant que les deux seuils (abonnés et likes cumulés) du palier suivant ne sont
+            pas atteints.<br>
+            Par exemple, 199 abonnés et 99 likes restent dans le palier 1% (≥ 100 abonnés, ≥ 50 likes).<br>
+            Le passage à 2% se fait uniquement à partir de 200 abonnés <strong>et</strong> 100 likes cumulés.<br>
+            <strong>Cette logique s’applique à chaque palier jusqu’au plafond de 10%.</strong>
+        </p>
+
+        <p style="margin-top:10px;">
+            ⏳ <strong>Inactivité prolongée :</strong> Si aucun palier n’est dépassé pendant une période de 3 mois, la
+            participation au programme peut être suspendue temporairement.
+            Le créateur ne recevra plus de revenus jusqu’à ce qu’un nouveau palier soit atteint.
+            Cette règle permet de garantir un programme actif et équitable pour tous.
+        </p>
+
+
+        <h2>📩 Contact</h2>
+        <p>Une question ? Écris-nous à <a href="mailto:contact@brimeet.com">contact@brimeet.com</a></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 BriMeet. Tous droits réservés.</p>
+    </footer>
+
+</body>
+
+</html>

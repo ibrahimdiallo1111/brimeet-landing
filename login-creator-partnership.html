@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connexion – BriMeet</title>
+  <meta name="description" content="Connectez-vous à votre compte BriMeet pour accéder au programme créateur.">
+
+  <!-- 🎯 Favicon et icônes multi-plateformes -->
+  <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="BriMeet" />
+  <link rel="manifest" href="/favicon/site.webmanifest" />
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: #f4f8ff;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #0077cc;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .logo {
+      width: 120px;
+      margin-bottom: 20px;
+    }
+
+    section {
+      max-width: 400px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    form {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    button {
+      background-color: #0077cc;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      margin-top: 20px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #005fa3;
+    }
+
+    .note {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .note a {
+      color: #0077cc;
+      font-weight: bold;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <img src="assets/brimeet_logo.png" alt="Logo BriMeet" class="logo">
+    <h1>Connexion – Programme Créateur BriMeet</h1>
+    <p>Connectez le monde, ouvrez les opportunités</p>
+  </header>
+
+  <section>
+    <h2>🔐 Connexion</h2>
+    <p>Connectez-vous avec votre compte BriMeet pour accéder à la candidature.</p>
+
+    <form id="login-form">
+      <label for="email">Email BriMeet</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="password">Mot de passe</label>
+      <input type="password" id="password" name="password" required>
+
+      <button type="submit">Se connecter</button>
+    </form>
+
+    <div class="note">
+      <p>Pas encore de compte ?</p>
+      <a href="https://brimeet.com">📲 Télécharger BriMeet et créer un compte</a>
+    </div>
+  </section>
+
+  <footer style="background-color:#0077cc; color:white; text-align:center; padding:20px; margin-top:40px;">
+    <p>&copy; 2025 BriMeet. Tous droits réservés.</p>
+    <p>📩 Contact : <a href="mailto:contact@brimeet.com" style="color:white;">contact@brimeet.com</a></p>
+  </footer>
+
+  <script type="module">
+    document.getElementById("login-form").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      // Définir ton backend URL
+      //const backendUrl = "https://6278b1d6e87e.ngrok-free.app"; // en dev avec ngrok
+      const backendUrl = "https://api.brimeet.com"; // en prod
+
+      const response = await fetch(`${backendUrl}/creator-partnership/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password })
+      });
+
+      const result = await response.json();
+
+      if (result.error) {
+        alert("❌ Connexion échouée : " + result.error);
+      } else {
+        // 🔐 Stocker le token
+        localStorage.setItem("authToken", result.token);
+        localStorage.setItem("promoCode", result.promo_code); // ✅ stocker le code promo
+
+        if (result.status === "selected") {
+          // ✅ Déjà sélectionné → redirection vers le dashboard avec le statut sélectionné
+          window.location.href = "/creator-dashboard.html?status=selected";
+        } else if (result.status === "pending") {
+          // ⏳ Ta candidature est en attente. redirection vers le dashboard avec le statut en attente
+          window.location.href = "/creator-dashboard.html?status=pending";
+        } else {
+          // ❌ Pas encore sélectionné ou aucune candidature → redirection vers la candidature dans dashboard avec le satut none
+          window.location.href = "/creator-dashboard.html?status=none";
+        }
+      }
+    });
+
+  </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mon solde BriMeet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #f0f8ff;
+            /* bleu très clair en arrière-plan */
+        }
+
+        h1 {
+            color: #007BFF;
+            /* bleu principal BriMeet */
+        }
+
+        .balance-box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            display: inline-block;
+            border: 2px solid #007BFF;
+            /* encadré bleu */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .balance-box h2 {
+            margin: 0 0 10px;
+            color: #007BFF;
+            /* titre en bleu */
+        }
+
+        #walletBalance {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .note {
+            margin-top: 10px;
+            color: #555;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>💼 Mon solde BriMeet</h1>
+    <div class="balance-box">
+        <h2>Solde actuel</h2>
+        <p id="walletBalance">--</p>
+        <p style="margin-top:10px; color:gray;">
+            ℹ️ Tu peux retirer ton argent directement depuis ton application BriMeet.
+        </p>
+    </div>
+
+    <script>
+        const backendUrl = "https://api.brimeet.com";
+        const token = localStorage.getItem("authToken");
+
+        // ✅ Option A : récupérer depuis localStorage (rapide)
+        const balance = localStorage.getItem("walletBalance");
+        if (balance) {
+            document.getElementById("walletBalance").textContent = balance + " $";
+        }
+        // ✅ Option B : récupérer depuis ton API (plus robuste)
+        // Tu peux activer l’option B si tu crées la route /api/wallet
+        // loadWallet();
+    </script>
+</body>
+
+</html>

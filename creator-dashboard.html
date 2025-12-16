@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espace Créateur – BriMeet</title>
+
+    <!-- 🎯 Favicon et icônes multi-plateformes -->
+    <!-- Icône PNG pour navigateurs classiques -->
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+    <!-- Icône SVG pour navigateurs modernes -->
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <!-- Favicon ICO pour compatibilité maximale -->
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <!-- Icône Apple pour écran d’accueil iOS -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <!-- Nom affiché lors de l’ajout à l’écran d’accueil iOS -->
+    <meta name="apple-mobile-web-app-title" content="BriMeet" />
+    <!-- Manifest PWA pour Chrome/Android -->
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f8fb;
+            color: #333;
+        }
+
+        header {
+            background-color: #0077cc;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        header .logo {
+            max-width: 120px;
+            margin-bottom: 15px;
+        }
+
+        header h1 {
+            margin: 10px 0;
+            font-size: 2em;
+        }
+
+        header p {
+            font-size: 1.1em;
+            margin: 0;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        section h2 {
+            color: #0077cc;
+            margin-bottom: 15px;
+        }
+
+        #status {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        #actions a {
+            display: inline-block;
+            margin: 10px 10px 0 0;
+            padding: 12px 20px;
+            background-color: #0077cc;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+        }
+
+        #actions a:hover {
+            background-color: #005fa3;
+        }
+
+        footer {
+            background-color: #0077cc;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        footer a {
+            color: #ffdd57;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="assets/brimeet_logo.png" alt="Logo BriMeet" class="logo">
+        <h1>Espace créateur BriMeet</h1>
+        <p>Connectez le monde, ouvrez les opportunités 🌍</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>📊 Statut de ta candidature</h2>
+            <p id="status"></p>
+            <div id="actions"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 BriMeet. Tous droits réservés.</p>
+        <p>📩 Contact : <a href="mailto:contact@brimeet.com">contact@brimeet.com</a></p>
+    </footer>
+
+    <script>
+        const params = new URLSearchParams(window.location.search)
+        const status = params.get("status")
+
+        const statusEl = document.getElementById("status")
+        const actionsEl = document.getElementById("actions")
+
+        if (status === "selected") {
+            statusEl.textContent = "✅ Tu es sélectionné pour le programme créateur BriMeet."
+            actionsEl.innerHTML = `
+        <a href="/creator-kit.html">📦 Accéder à ton Creator Kit</a>
+        <a href="/creator-stats.html">📊 Voir tes performances et revenus</a>
+      `
+        } else if (status === "pending") {
+            statusEl.textContent = "⏳ Ta candidature est en attente."
+        } else {
+            statusEl.textContent = "❌ Tu n’as pas encore postulé."
+            actionsEl.innerHTML = `
+        <a href="/creator-partnership-application.html">📩 Envoyer une candidature</a>
+      `
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ – Programme Créateur BriMeet</title>
+  <meta name="description"
+    content="Questions fréquentes sur le programme créateur BriMeet. Trouve toutes les réponses ici.">
+  <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="BriMeet" />
+  <link rel="manifest" href="/favicon/site.webmanifest" />
+  <!-- Google Analytics -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QH2N81X6GM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-QH2N81X6GM');
+  </script>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: #f4f8ff;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0077cc, #005fa3);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    header img.logo {
+      width: 100px;
+      margin-bottom: 15px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+
+    section {
+      max-width: 900px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    h2 {
+      color: #0077cc;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .faq-item {
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 15px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .faq-item h3 {
+      color: #0077cc;
+      cursor: pointer;
+      margin: 0;
+    }
+
+    .faq-item p {
+      display: none;
+      /* caché par défaut */
+      margin-top: 10px;
+    }
+
+    .download-btn {
+      display: inline-block;
+      background-color: #0077cc;
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      margin-top: 10px;
+    }
+
+    .download-btn:hover {
+      background-color: #005fa3;
+    }
+
+    footer {
+      background-color: #0077cc;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: #fff;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <img src="/assets/brimeet_logo.png" alt="Logo BriMeet" class="logo">
+    <h1>❓ FAQ – Programme Créateur BriMeet</h1>
+    <p>Toutes les réponses à vos questions</p>
+  </header>
+
+  <!-- FAQ Section -->
+  <section>
+    <h2>Questions fréquentes</h2>
+
+    <div class="faq-item">
+      <h3>Est-ce que je peux postuler sans compte BriMeet ?</h3>
+      <p>Pour rejoindre le programme créateur BriMeet, un compte est nécessaire.
+        Crée ton compte facilement en téléchargeant l’application BriMeet sur Google Play.</p>
+      <a href="https://play.google.com/store/apps/details?id=fr.teachonline.teachonline" class="download-btn"
+        target="_blank">📲 Télécharger sur Google Play</a>
+    </div>
+
+    <div class="faq-item">
+      <h3>Quels sont les critères de sélection ?</h3>
+      <p>Nous évaluons ton profil selon ton audience sur les réseaux sociaux, ton engagement et la qualité de ton
+        contenu.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Comment suivre mes revenus ?</h3>
+      <p>Une fois sélectionné, tu auras accès à un dashboard créateur avec suivi des performances et revenus en temps
+        réel.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Combien de temps dure le partenariat ?</h3>
+      <p>Le partenariat est limité dans le temps mais peut être renouvelé selon tes résultats et ton engagement.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Est-ce que BriMeet est disponible partout ?</h3>
+      <p>Oui, BriMeet est une application internationale, accessible partout dans le monde.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 BriMeet – Tous droits réservés</p>
+    <a href="/creator-partnership/login.html">Programme Créateur BriMeet</a> |
+    <a href="mailto:contact@brimeet.com">Contact</a>
+  </footer>
+
+  <!-- FAQ Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const items = document.querySelectorAll(".faq-item h3");
+      items.forEach(item => {
+        item.addEventListener("click", () => {
+          const p = item.nextElementSibling;
+          const isVisible = p.style.display === "block";
+          // Fermer toutes les autres réponses
+          document.querySelectorAll(".faq-item p").forEach(el => el.style.display = "none");
+          // Toggle la réponse cliquée
+          p.style.display = isVisible ? "none" : "block";
+        });
+      });
+    });
+  </script>
+
+</body>
+
+</html>

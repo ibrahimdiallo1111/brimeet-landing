@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <title>Merci pour ta candidature !</title>
@@ -18,7 +19,18 @@
   <!-- Manifest PWA pour Chrome/Android -->
   <link rel="manifest" href="/favicon/site.webmanifest" />
 
-  
+  <!-- Google Analytics -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QH2N81X6GM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-QH2N81X6GM');
+  </script>
+
+
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -27,9 +39,11 @@
       text-align: center;
       padding: 100px 20px;
     }
+
     h1 {
       color: #0077cc;
     }
+
     a {
       color: #0077cc;
       text-decoration: none;
@@ -37,10 +51,12 @@
     }
   </style>
 </head>
+
 <body>
   <h1>🎉 Merci pour ta candidature !</h1>
   <p>Nous avons bien reçu ta demande pour rejoindre le programme partenaire BriMeet.</p>
   <p>Notre équipe te contactera sous peu si ton profil est retenu.</p>
   <p><a href="https://brimeet.com">⬅️ Revenir au site</a></p>
 </body>
+
 </html>

@@ -20,6 +20,17 @@
     <!-- Manifest PWA pour Chrome/Android -->
     <link rel="manifest" href="/favicon/site.webmanifest" />
 
+    <!-- Google Analytics -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QH2N81X6GM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-QH2N81X6GM');
+    </script>
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -106,7 +117,7 @@
 
 <body>
     <header>
-        <img src="assets/brimeet_logo.png" alt="Logo BriMeet" class="logo">
+        <img src="/assets/brimeet_logo.png" alt="Logo BriMeet" class="logo">
         <h1>Espace créateur BriMeet</h1>
         <p>Connectez le monde, ouvrez les opportunités 🌍</p>
     </header>
@@ -134,15 +145,15 @@
         if (status === "selected") {
             statusEl.textContent = "✅ Tu es sélectionné pour le programme créateur BriMeet."
             actionsEl.innerHTML = `
-        <a href="/creator-kit.html">📦 Accéder à ton Creator Kit</a>
-        <a href="/creator-stats.html">📊 Voir tes performances et revenus</a>
+        <a href="/creator-partnership/kit.html">📦 Accéder à ton Creator Kit</a>
+        <a href="/creator-partnership/stats.html">📊 Voir tes performances et revenus</a>
       `
         } else if (status === "pending") {
             statusEl.textContent = "⏳ Ta candidature est en attente."
         } else {
             statusEl.textContent = "❌ Tu n’as pas encore postulé."
             actionsEl.innerHTML = `
-        <a href="/creator-partnership-application.html">📩 Envoyer une candidature</a>
+        <a href="/creator-partnership/application.html">📩 Envoyer une candidature</a>
       `
         }
     </script>

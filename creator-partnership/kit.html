@@ -22,13 +22,24 @@
     <meta property="og:description"
         content="Accède à ton kit créateur BriMeet : visuels officiels, code promo, guidelines et conditions.">
     <meta property="og:image" content="https://brimeet.com/assets/brimeet_logo.png">
-    <meta property="og:url" content="https://brimeet.com/creator-kit.html">
+    <meta property="og:url" content="https://brimeet.com/creator-partnership/kit.html">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Kit Créateur – BriMeet">
     <meta name="twitter:description"
         content="Accède à ton kit créateur BriMeet : visuels officiels, code promo, guidelines et conditions.">
     <meta name="twitter:image" content="https://brimeet.com/assets/brimeet_logo.png">
+
+    <!-- Google Analytics -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QH2N81X6GM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-QH2N81X6GM');
+    </script>
 
     <style>
         body {
@@ -106,12 +117,12 @@
 <body>
 
     <header>
-        <img src="assets/brimeet_logo.png" alt="Logo BriMeet" class="logo">
+        <img src="/assets/brimeet_logo.png" alt="Logo BriMeet" class="logo">
         <h1>Kit Créateur BriMeet</h1>
         <p>Connectez le monde, ouvrez les opportunités</p>
     </header>
 
-    <section>
+    <section id="creator-kit">
         <div class="highlight">
             <strong>🎉 Félicitations !</strong> Tu fais partie du programme Créateur BriMeet. Voici ton kit officiel.
         </div>
@@ -125,10 +136,60 @@
         <script>
             document.addEventListener("DOMContentLoaded", () => {
                 const promoCode = localStorage.getItem("promoCode");
-                document.getElementById("promo-code").textContent = promoCode ?? "—"; // ✅ valeur par défaut
-            });
+                console.log("Promo code récupéré:", promoCode);
 
+                if (!promoCode || promoCode === "null" || promoCode === "undefined" || promoCode === "") {
+                    document.getElementById("promo-code").textContent = "—";
+                    const btn = document.createElement("button");
+                    btn.style.borderRadius = "5px";
+                    btn.style.backgroundColor = "#007BFF";
+                    btn.style.color = "#fff";
+                    btn.style.padding = "6px 12px";
+                    btn.style.marginLeft = "10px";
+                    btn.textContent = "Choisir mon code promo (ex: kader10)";
+
+                    btn.onclick = async () => {
+                        const newCode = prompt("Entre ton code promo souhaité (ex: kader10):");
+                        if (newCode) {
+                            try {
+                                const backendUrl = "https://api.brimeet.com";
+                                const token = localStorage.getItem("authToken");
+
+                                const response = await fetch(`${backendUrl}/creator-partnership/set-promo-code`, {
+                                    method: "POST",
+                                    headers: {
+                                        "Content-Type": "application/json",
+                                        "Authorization": `Bearer ${token}`
+                                    },
+                                    body: JSON.stringify({
+                                        userId: localStorage.getItem("userId"),
+                                        promoCode: newCode
+                                    })
+                                });
+
+                                const result = await response.json();
+                                if (result.error) {
+                                    alert("❌ Erreur : " + result.error);
+                                } else {
+                                    localStorage.setItem("promoCode", result.promoCode);
+                                    document.getElementById("promo-code").textContent = result.promoCode;
+                                    alert("✅ Code promo enregistré avec succès !");
+                                    btn.remove(); // 🚀 bouton disparaît automatiquement
+                                }
+                            } catch (err) {
+                                console.error("Erreur réseau :", err);
+                                alert("❌ Impossible de contacter le serveur.");
+                            }
+                        }
+                    };
+
+                    document.querySelector("#promo-code").parentElement.appendChild(btn);
+                } else {
+                    document.getElementById("promo-code").textContent = promoCode;
+                }
+            });
         </script>
+
 
         <p>Lorsqu’un utilisateur utilise ton code promo lors de son inscription :</p>
         <ul>
@@ -165,7 +226,7 @@
             <li>📌 <strong>Logo BriMeet :</strong> disponible en PNG</li>
         </ul>
         <p>📥 Tu peux télécharger le logo ici :</p>
-        <a href="assets/brimeet_logo.png" download class="download-button">📥 Télécharger le logo</a>
+        <a href="/assets/brimeet_logo.png" download class="download-button">📥 Télécharger le logo</a>
 
 
         <h2>🧭 Guidelines de communication</h2>

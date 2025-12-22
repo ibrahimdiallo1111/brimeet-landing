@@ -15,6 +15,17 @@
   <meta name="apple-mobile-web-app-title" content="BriMeet" />
   <link rel="manifest" href="/favicon/site.webmanifest" />
 
+  <!-- Google Analytics -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QH2N81X6GM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-QH2N81X6GM');
+  </script>
+
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -95,7 +106,7 @@
 <body>
 
   <header>
-    <img src="assets/brimeet_logo.png" alt="Logo BriMeet" class="logo">
+    <img src="/assets/brimeet_logo.png" alt="Logo BriMeet" class="logo">
     <h1>Connexion – Programme Créateur BriMeet</h1>
     <p>Connectez le monde, ouvrez les opportunités</p>
   </header>
@@ -132,7 +143,7 @@
       const email = document.getElementById("email").value;
       const password = document.getElementById("password").value;
       // Définir ton backend URL
-      //const backendUrl = "https://6278b1d6e87e.ngrok-free.app"; // en dev avec ngrok
+      //const backendUrl = "https://cf5130788760.ngrok-free.app"; // en dev avec ngrok
       const backendUrl = "https://api.brimeet.com"; // en prod
 
       const response = await fetch(`${backendUrl}/creator-partnership/login`, {
@@ -152,13 +163,13 @@
 
         if (result.status === "selected") {
           // ✅ Déjà sélectionné → redirection vers le dashboard avec le statut sélectionné
-          window.location.href = "/creator-dashboard.html?status=selected";
+          window.location.href = "/creator-partnership/dashboard.html?status=selected";
         } else if (result.status === "pending") {
           // ⏳ Ta candidature est en attente. redirection vers le dashboard avec le statut en attente
-          window.location.href = "/creator-dashboard.html?status=pending";
+          window.location.href = "/creator-partnership/dashboard.html?status=pending";
         } else {
           // ❌ Pas encore sélectionné ou aucune candidature → redirection vers la candidature dans dashboard avec le satut none
-          window.location.href = "/creator-dashboard.html?status=none";
+          window.location.href = "/creator-partnership/dashboard.html?status=none";
         }
       }
     });

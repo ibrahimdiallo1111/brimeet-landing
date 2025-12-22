@@ -25,7 +25,7 @@
   <meta name="description"
     content="Rejoins le programme créateur BriMeet et gagne une part des revenus générés par ton audience. Candidature ouverte aux créateurs de contenu engagés.">
   <meta name="keywords"
-    content="brimeet, bright meet, Bright Meet, partenariat créateur, programme partenaire, influenceur, contenu, revenus, code promo, ambassadeur BriMeet">
+    content="brimeet, bright meet, Bright Meet, partenariat créateur, programme partenaire, influenceur, contenu, revenus, ambassadeur BriMeet">
 
   <!-- 📣 Open Graph -->
   <meta property="og:title" content="Programme Créateur – BriMeet">
@@ -46,6 +46,18 @@
 
   <!-- 🤖 Robots -->
   <meta name="robots" content="index, follow">
+
+  <!-- Google Analytics -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QH2N81X6GM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-QH2N81X6GM');
+  </script>
+
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -148,7 +160,7 @@
 <body>
 
   <header>
-    <img src="assets/brimeet_logo.png" alt="Logo BriMeet" class="logo">
+    <img src="/assets/brimeet_logo.png" alt="Logo BriMeet" class="logo">
     <h1>Programme Créateur BriMeet</h1>
     <p>Connectez le monde, ouvrez les opportunités</p>
     <a href="https://brimeet.com" class="cta-button">🌐 Découvrir BriMeet</a>
@@ -160,7 +172,6 @@
     <ul>
       <li>📈 Gagne une part des revenus générés par ton audience</li>
       <li>🎯 Partenariat à durée limitée, renouvelable selon tes résultats</li>
-      <li>🎁 À chaque utilisation de ton code promo, toi et l’utilisateur recevez des bonus.</li>
       <li>📊 Suivi mensuel clair et accessible</li>
     </ul>
 
@@ -190,9 +201,6 @@
       <label for="motivation">Pourquoi veux-tu promouvoir BriMeet ?</label>
       <textarea id="motivation" name="motivation" rows="4" required></textarea>
 
-      <label for="code">Code promo souhaité (ex: kader10)</label>
-      <input type="text" id="code" name="code">
-
       <button type="submit">📩 Envoyer ma candidature</button>
     </form>
 
@@ -208,7 +216,7 @@
           audience: document.getElementById("audience").value,
           content_type: document.getElementById("content").value,
           motivation: document.getElementById("motivation").value,
-          promo_code: document.getElementById("code").value
+          promo_code: "" // ✅ vide au moment de la candidature
         };
 
         const backendUrl = "https://api.brimeet.com";

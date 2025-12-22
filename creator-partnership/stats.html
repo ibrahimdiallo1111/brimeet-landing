@@ -114,6 +114,21 @@
         footer a:hover {
             text-decoration: underline;
         }
+
+        @media (max-width: 768px) {
+
+            table th,
+            table td {
+                padding: 6px;
+                font-size: 0.8em;
+            }
+        }
+
+        .table-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            /* défilement fluide sur iOS */
+        }
     </style>
 
 </head>
@@ -126,36 +141,41 @@
 
     <main>
         <h2>Vos performances</h2>
-        <table>
-            <tr>
-                <th>Abonnés</th>
-                <th>Likes cumulés</th>
-                <th>Invitations</th>
-                <th>Pourcentage revenu</th>
-                <th>Statut</th>
-            </tr>
-            <tr>
-                <td id="audience">--</td>
-                <td id="likes">--</td>
-                <td id="invites">--</td>
-                <td id="percent">--</td>
-                <td id="status">--</td>
-            </tr>
-        </table>
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>Abonnés</th>
+                    <th>Likes cumulés</th>
+                    <th>Invitations</th>
+                    <th>Pourcentage revenu</th>
+                    <th>Statut</th>
+                </tr>
+                <tr>
+                    <td id="audience">--</td>
+                    <td id="likes">--</td>
+                    <td id="invites">--</td>
+                    <td id="percent">--</td>
+                    <td id="status">--</td>
+                </tr>
+            </table>
+
+        </div>
 
         <h2>Vos revenus</h2>
-        <table>
-            <tr>
-                <th>Revenu en cours</th>
-                <th>Revenu mois passé</th>
-                <th>Solde total validé</th>
-            </tr>
-            <tr>
-                <td id="current_revenue">⏳ En cours</td>
-                <td id="last_revenue">--</td>
-                <td id="total_balance">--</td>
-            </tr>
-        </table>
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>Revenu en cours</th>
+                    <th>Revenu mois passé</th>
+                    <th>Solde total validé</th>
+                </tr>
+                <tr>
+                    <td id="current_revenue">⏳ En cours</td>
+                    <td id="last_revenue">--</td>
+                    <td id="total_balance">--</td>
+                </tr>
+            </table>
+        </div>
 
         <a href="#" class="transfer-btn" id="transferBtn">💳 Transférer vers mon solde BriMeet</a>
 

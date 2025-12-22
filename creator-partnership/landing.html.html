@@ -164,6 +164,44 @@
     footer a:hover {
       text-decoration: underline;
     }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 30px 15px;
+        /* moins de padding sur mobile */
+      }
+
+      header h1 {
+        font-size: 1.8em;
+        /* réduire la taille du titre */
+      }
+
+      header p {
+        font-size: 1em;
+        /* réduire le texte */
+      }
+
+      .steps {
+        flex-direction: column;
+        /* empile les blocs au lieu de les mettre côte à côte */
+      }
+
+      .step {
+        margin: 10px 0;
+        /* espacement vertical */
+      }
+
+      section {
+        padding: 30px 15px;
+        /* réduire le padding */
+      }
+
+      .cta-button {
+        padding: 12px 20px;
+        /* bouton plus compact */
+        font-size: 1em;
+      }
+    }
   </style>
 </head>
 

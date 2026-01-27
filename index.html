@@ -75,26 +75,60 @@
       la version Android sur Google Play</a>
   </header>
 
+  <section class="value">
+    <h2>Pourquoi utiliser BriMeet ?</h2>
+    <ul>
+      <li>✨ Gagnez en visibilité</li>
+      <li>💰 Monétisez vos talents et contenus</li>
+      <li>🛍️ Proposez ou trouvez des services, produits et emplois</li>
+      <li>🤝 Créez des connexions utiles et durables</li>
+      <li>📡 Collaborez facilement en ligne</li>
+    </ul>
+  </section>
+
+
   <section class="features">
     <h2>🧩 Concept général</h2>
     <p>BriMeet est une plateforme de réseau social et professionnel, conçue pour tout le monde.</p>
 
     <h2>🚀 Fonctionnalités principales</h2>
     <ul>
-      <li>🎬 <strong>Création de contenu :</strong> publiez vos vidéos et gagnez en visibilité.</li>
-      <li>💰🎁 <strong>Monétisation & Cadeaux virtuels :</strong> Gagnez de l'argent grâce aux cadeaux virtuels,
-        convertibles en argent réel. <a href="https://info.brimeet.com/monetization-fr.html">En savoir plus</a></li>
+      <li>🎬 <strong>Création de contenu :</strong> publiez vos contenus et gagnez en visibilité.</li>
       <li>💬 <strong>Messagerie sociale & professionnelle :</strong>
-        échange complet entre amis ou collègues : messages texte, vocaux, images, vidéos, documents.
-        La messagerie professionnelle inclut en plus les appels vidéo enrichis avec outils de présentation (images,
-        vidéos, documents), tableau virtuel intégré, et contrôle de la caméra et du micro.
+        échange complet entre amis ou collègues avec tous les outils d’échange nécessaires.
         <a href="https://info.brimeet.com/messaging-fr.html">En savoir plus</a>
       </li>
-      <li>💼 <strong>Propositions & Demandes :</strong> services, produits, offres d’emploi.</li>
+      <li>💼 <strong>Propositions & Demandes :</strong> proposer ou rechercher services, produits et offres d’emploi.</li>
       <li>🎓 <strong>Cours et conférences :</strong> enseignez, collaborez et présentez vos projets en direct.</li>
-      <li>🌐<strong>Communautés :</strong> créer et animer des espaces d’échange autour de vos passions ou expertises.
+      <li>🌐<strong>Communautés :</strong> rejoindre, créer et animer des espaces d’échange autour de vos passions ou expertises.
       </li>
     </ul>
+
+
+    <!-- 🔹 Phrase de transition stratégique -->
+    <p class="transition">
+      BriMeet ne se limite pas à connecter les gens ou à offrir de la visibilité.
+      Elle vous aide à transformer vos talents et contenus en valeur durable.
+    </p>
+
+    <h2>💰 Transformez votre activité en revenus sur BriMeet</h2>
+    <p>
+      BriMeet vous permet de transformer votre présence et vos talents
+      en revenus réels.
+    </p>
+
+    <ul>
+      <li>
+        🎥 <strong>Programme Créateur BriMeet :</strong>
+        monétisez vos contenus après inscription au programme.
+      </li>
+      <li>
+        🎁 <strong>Cadeaux virtuels :</strong>
+        Gagnez de l'argent grâce aux cadeaux virtuels,
+        convertibles en argent réel. <a href="https://info.brimeet.com/monetization-fr.html">En savoir plus</a>
+      </li>
+    </ul>
+
 
     <h2>🎯 Public cible</h2>
     <ul>
@@ -111,15 +145,20 @@
   </section>
 
   <section class="ios">
-    <h2>📱 Version iOS bientôt disponible</h2>
+    <h2>📱 Version iOS à venir</h2>
     <p>Inscrivez-vous pour être informé dès sa sortie :</p>
     <a href="https://forms.gle/arM1gVWoWwLU1NXR9" class="cta-button">🔔 Formulaire iOS</a>
   </section>
 
   <footer>
-    <p>&copy; 2025 BriMeet. Tous droits réservés.</p>
+    <p>&copy; <span id="year"></span> BriMeet. Tous droits réservés.</p>
     <p>📩 Contactez-nous : <a href="mailto:contact@brimeet.com">contact@brimeet.com</a></p>
   </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
 </body>
 
 </html>

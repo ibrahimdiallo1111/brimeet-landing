@@ -162,10 +162,15 @@
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 BriMeet – Tous droits réservés</p>
+    <p>&copy; <span id="year"></span> BriMeet – Tous droits réservés</p>
     <a href="/creator-partnership/login.html">Programme Créateur BriMeet</a> |
     <a href="mailto:contact@brimeet.com">Contact</a>
   </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
 
   <!-- FAQ Script -->
   <script>

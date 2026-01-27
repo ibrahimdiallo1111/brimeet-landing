@@ -40,6 +40,39 @@ section {
   margin: auto;
 }
 
+.value {
+  background-color: #e6f0ff; /* Couleur douce pour distinguer la section */
+  padding: 40px 20px;
+  text-align: center;
+  border-radius: 12px;
+  margin: 40px auto;
+  max-width: 900px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.value h2 {
+  font-size: 1.8em;
+  color: #0077cc;
+  margin-bottom: 20px;
+}
+
+.value ul {
+  list-style: none;
+  padding: 0;
+}
+
+.value li {
+  font-size: 1.2em;
+  margin: 12px 0;
+  font-weight: 500;
+  color: #333;
+}
+
+.value li::before {
+  content: none;
+}
+
+
 .features ul {
   list-style: none;
   padding: 0;
@@ -68,6 +101,18 @@ footer {
   text-align: center;
   padding: 20px;
 }
+
+.transition {
+  margin: 40px auto;
+  font-style: italic;
+  font-size: 1.15em;
+  color: #444;
+  text-align: center;
+  border-left: 4px solid #0077cc;
+  padding-left: 16px;
+  max-width: 750px;
+}
+
 
 @media (max-width: 600px) {
   .features li {

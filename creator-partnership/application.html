@@ -244,9 +244,13 @@
   </section>
 
   <footer>
-    <p>&copy; 2025 BriMeet. Tous droits réservés.</p>
+    <p>&copy; <span id="year"></span> BriMeet. Tous droits réservés.</p>
     <p>📩 Contact : <a href="mailto:contact@brimeet.com" style="color:white;">contact@brimeet.com</a></p>
   </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 
 </body>
 

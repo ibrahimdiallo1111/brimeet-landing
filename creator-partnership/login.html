@@ -132,9 +132,12 @@
   </section>
 
   <footer style="background-color:#0077cc; color:white; text-align:center; padding:20px; margin-top:40px;">
-    <p>&copy; 2025 BriMeet. Tous droits réservés.</p>
+    <p>&copy; <span id="year"></span> BriMeet. Tous droits réservés.</p>
     <p>📩 Contact : <a href="mailto:contact@brimeet.com" style="color:white;">contact@brimeet.com</a></p>
   </footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 
   <script type="module">
     document.getElementById("login-form").addEventListener("submit", async function (e) {

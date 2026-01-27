@@ -220,7 +220,7 @@
     <h2>🎯 Pourquoi devenir créateur partenaire ?</h2>
     <ul>
       <li>📈 Gagne une part des revenus générés par ton audience</li>
-      <li>🌍 Visibilité internationale pour ta communauté</li>
+      <li>🌍 Visibilité internationale</li>
       <li>🛠️ Outils dédiés : dashboard, suivi des performances et revenus</li>
       <li>🤝 Partenariat transparent et renouvelable selon tes résultats</li>
     </ul>
@@ -267,11 +267,15 @@
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 BriMeet – Tous droits réservés</p>
+    <p>&copy; <span id="year"></span> BriMeet – Tous droits réservés</p>
     <a href="https://brimeet.com">Découvrir BriMeet</a> |
     <a href="/creator-partnership/faq.html">FAQ</a> |
     <a href="mailto:contact@brimeet.com">Contact</a>
   </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 
 </body>
 

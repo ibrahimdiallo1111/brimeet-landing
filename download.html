@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- 🎯 Favicon et icônes multi-plateformes -->
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="BriMeet" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+
+    <!-- 🧭 Titre et balises SEO -->
+    <title>Télécharger BriMeet - Android, iOS et Web</title>
+    <meta name="description"
+        content="Téléchargez BriMeet sur Android, inscrivez-vous pour la version iOS à venir, ou visitez le site officiel pour en savoir plus.">
+    <meta name="keywords"
+        content="brimeet, BriMeet, Bright Meet, téléchargement, Android, iOS, réseau social, réseau professionnel, application mobile, waitlist iOS, site officiel BriMeet">
+    <meta name="robots" content="index, follow">
+
+    <!-- 📣 Balises Open Graph -->
+    <meta property="og:title" content="Télécharger BriMeet - Android, iOS et Web">
+    <meta property="og:description"
+        content="Téléchargez BriMeet sur Android, inscrivez-vous pour la version iOS à venir, ou visitez le site officiel pour en savoir plus.">
+    <meta property="og:image" content="https://brimeet.com/assets/brimeet_logo.png">
+    <meta property="og:url" content="https://brimeet.com/download">
+    <meta property="og:type" content="website">
+
+    <!-- 🐦 Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Télécharger BriMeet - Android, iOS et Web">
+    <meta name="twitter:description"
+        content="Téléchargez BriMeet sur Android, inscrivez-vous pour la version iOS à venir, ou visitez le site officiel pour en savoir plus.">
+    <meta name="twitter:image" content="https://brimeet.com/assets/brimeet_logo.png">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QH2N81X6GM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-QH2N81X6GM');
+    </script>
+
+    <style>
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            padding: 2rem;
+            font-size: 18px;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 1.2rem;
+            padding: 0.8rem 1.5rem;
+            font-size: 18px;
+            background: #2196f3;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+
+        .logo {
+            width: 120px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+
+
+<body>
+    <div id="loading">
+        <p>Redirection en cours vers <strong>BriMeet</strong>...</p>
+    </div>
+
+    <!-- iOS fallback -->
+    <div id="fallback-ios" style="display:none;">
+        <img src="/assets/brimeet_logo.png" alt="Logo BriMeet" class="logo">
+        <h1><strong>BriMeet</strong> n’est pas encore disponible sur iPhone</h1>
+        <p>👉 Inscrivez-vous pour être informé du lancement sur iPhone :</p>
+        <a href="https://forms.gle/arM1gVWoWwLU1NXR9" class="btn"
+            onclick="gtag('event','ios_waitlist',{event_category:'App',event_label:'iOS Waitlist'});">
+            Rejoindre la liste d’attente
+        </a>
+        <p><a href="https://brimeet.com" class="btn">Visitez le site officiel</a></p>
+    </div>
+
+    <!-- Web fallback -->
+    <div id="fallback-web" style="display:none;">
+        <img src="/assets/brimeet_logo.png" alt="Logo BriMeet" class="logo">
+        <h1>Télécharger <strong>BriMeet</strong></h1>
+
+        <p>👉 📱 Disponible sur Android :</p>
+        <a href="https://play.google.com/store/apps/details?id=fr.teachonline.teachonline" class="btn"
+            onclick="gtag('event','web_android_click',{event_category:'App',event_label:'Web Android'});">
+            Télécharger sur Google Play
+        </a>
+
+        <p>👉 📱 Version iPhone (iOS) à venir :</p>
+        <a href="https://forms.gle/arM1gVWoWwLU1NXR9" class="btn"
+            onclick="gtag('event','web_ios_waitlist',{event_category:'App',event_label:'Web iOS Waitlist'});">
+            Rejoindre la liste d’attente
+        </a>
+
+        <p>👉 En savoir plus :</p>
+        <a href="https://brimeet.com" class="btn"
+            onclick="gtag('event','web_official_site',{event_category:'App',event_label:'Web Official'});">
+            Visitez le site officiel
+        </a>
+    </div>
+
+
+
+    <script>
+        function redirect() {
+            const ua = navigator.userAgent || navigator.vendor || window.opera;
+            const isIOS = /iPhone|iPad|iPod/.test(ua);
+            const isAndroid = /android/i.test(ua);
+
+            if (isAndroid) {
+                // Redirection directe vers Play Store
+                gtag('event', 'android_redirect', { event_category: 'App', event_label: 'Android Auto Redirect' });
+                window.location.href = "https://play.google.com/store/apps/details?id=fr.teachonline.teachonline";
+            } else if (isIOS) {
+                document.getElementById("loading").style.display = "none";
+                document.getElementById("fallback-ios").style.display = "block";
+            } else {
+                document.getElementById("loading").style.display = "none";
+                document.getElementById("fallback-web").style.display = "block";
+            }
+        }
+        window.onload = redirect;
+    </script>
+</body>
+
+</html>
